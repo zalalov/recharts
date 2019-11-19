@@ -72,7 +72,7 @@ class Brush extends PureComponent {
 
   // eslint-disable-next-line camelcase
   componentWillReceiveProps(nextProps) {
-    const { data, width, x, travellerWidth, updateId } = this.props;
+    const { data, width, x, travellerWidth, updateId, startIndex, endIndex } = this.props;
 
     if (
       (nextProps.data !== data || nextProps.updateId !== updateId) &&
@@ -83,7 +83,9 @@ class Brush extends PureComponent {
     } else if (
       nextProps.width !== width ||
       nextProps.x !== x ||
-      nextProps.travellerWidth !== travellerWidth
+      nextProps.travellerWidth !== travellerWidth ||
+      nextProps.startIndex !== startIndex ||
+      nextProps.endIndex !== endIndex
     ) {
       this.scale.range([nextProps.x, nextProps.x + nextProps.width - nextProps.travellerWidth]);
       this.scaleValues = this.scale.domain().map(entry => this.scale(entry));
